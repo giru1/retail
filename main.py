@@ -1,17 +1,14 @@
-from typing import Union
+from typing import Union, List
 from pydantic import BaseModel
 from fastapi import FastAPI
+from dao.model.company import Company
 
 app = FastAPI(
     title='Rig-line'
 )
 
 
-
-class Company:
-    pass
-
-@app.get("/")
+@app.get("/", response_model=List[Company])
 def read_root():
     return {"Hello": "World"}
 
